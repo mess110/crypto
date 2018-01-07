@@ -1,3 +1,5 @@
+# Crypto
+
 ```
-docker-compose up --build
+./scripts/up
 ```

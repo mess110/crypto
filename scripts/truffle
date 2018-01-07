@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+docker exec -it crypto_truffle_1 truffle "$@"

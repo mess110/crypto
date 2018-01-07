@@ -18,7 +18,9 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 COPY rskj-core-0.4.0-BAMBOO-all.jar /usr/share/rsk/
+
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 COPY mainnet.conf /etc/rsk/mainnet.conf
 COPY testnet.conf /etc/rsk/testnet.conf
 COPY entry.sh /

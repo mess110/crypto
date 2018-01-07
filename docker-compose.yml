@@ -1,18 +1,18 @@
 version: '3'
 services:
-  rsk_testnet:
-    build: dockers/rsk/
-    environment:
-      - RSK_CONF=/etc/rsk/testnet.conf
-    volumes:
-      - ./data/rsk_testnet:/var/lib/rsk/database/testnet
-
   rsk_mainnet:
     build: dockers/rsk/
     environment:
       - RSK_CONF=/etc/rsk/mainnet.conf
     volumes:
       - ./data/rsk_mainnet:/var/lib/rsk/database/mainnet
+
+  rsk_testnet:
+    build: dockers/rsk/
+    environment:
+      - RSK_CONF=/etc/rsk/testnet.conf
+    volumes:
+      - ./data/rsk_testnet:/var/lib/rsk/database/testnet
 
   rsk_mainnet_explorer:
     build: dockers/explorer/
@@ -54,11 +54,9 @@ services:
     ports:
       - "8545:8545"
 
-  # web:
-    # build: .
-    # ports:
-      # - "3000:3000"
-    # depends_on:
-      # - rsk
-    # volumes:
-      # - .:/usr/app
+  truffle:
+    build: dockers/truffle/
+    depends_on:
+      - rsk_mainnet
+      - rsk_testnet
+      - ganache
