@@ -7,7 +7,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends supervisor python-software-properties software-properties-common
 
-# Install RSK.
 RUN groupadd --gid 888 rsk && useradd rsk -d /var/lib/rsk -s /sbin/nologin --uid=888 --gid=888
 
 RUN \
@@ -18,11 +17,13 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+COPY rskj-core-0.4.0-BAMBOO-all.jar /usr/share/rsk/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY mainnet.conf /etc/rsk/mainnet.conf
 COPY testnet.conf /etc/rsk/testnet.conf
+COPY entry.sh /
 
 EXPOSE 4444
 EXPOSE 50505
 
-CMD ["/usr/bin/supervisord"]
+CMD ["sh", "entry.sh"]

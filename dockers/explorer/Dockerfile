@@ -8,7 +8,8 @@ RUN git clone https://github.com/rsksmart/explorer /usr/src/explorer
 WORKDIR /usr/src/explorer
 
 RUN npm install
-COPY config.json /usr/src/explorer/
+COPY mainnet.json /usr/src/explorer/
+COPY testnet.json /usr/src/explorer/
 COPY db.patch.js /usr/src/explorer/db.js
 COPY entry.sh /
 

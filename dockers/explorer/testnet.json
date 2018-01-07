@@ -1,0 +1,8 @@
+{
+  "gethHost": "crypto_rsk_testnet_1",
+  "gethPort": 4444,
+  "blocks": [ {"start": 2000, "end": "latest"}],
+  "quiet": false,
+  "terminateAtExistingDB": true,
+  "listenOnly": false
+}

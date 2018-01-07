@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker exec -it crypto_rsk_mainnet_1 java -cp /usr/share/rsk/rsk.jar co.rsk.GenNodeKeyId

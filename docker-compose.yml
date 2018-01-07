@@ -5,27 +5,34 @@ services:
     environment:
       - RSK_CONF=/etc/rsk/testnet.conf
     volumes:
-      - ./data/rsk_testnet:/data
-    # ports:
-      # - "4444:4444"
-      # - "50505:50505"
+      - ./data/rsk_testnet:/var/lib/rsk/database/testnet
 
   rsk_mainnet:
     build: dockers/rsk/
     environment:
       - RSK_CONF=/etc/rsk/mainnet.conf
     volumes:
-      - ./data/rsk_mainnet:/data
-    # ports:
-      # - "4444:4444"
-      # - "50505:50505"
+      - ./data/rsk_mainnet:/var/lib/rsk/database/mainnet
 
-  rsk_explorer_testnet:
+  rsk_mainnet_explorer:
+    build: dockers/explorer/
+    environment:
+      - MONGO_URI=mongodb://crypto_mongodb_1/blockDB
+      - EXPLORER_CONFIG=/usr/src/explorer/mainnet.json
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    depends_on:
+      - rsk_mainnet
+      - mongodb
+
+  rsk_testnet_explorer:
     build: dockers/explorer/
     environment:
       - MONGO_URI=mongodb://crypto_mongodb_1/blockDBTestnet
+      - EXPLORER_CONFIG=/usr/src/explorer/testnet.json
     ports:
-      - "3001:3000"
+      - "3002:3000"
     restart: unless-stopped
     depends_on:
       - rsk_testnet
@@ -42,11 +49,10 @@ services:
       - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null # --quiet
 
-  # Local development
-  # ganache:
-    # image: trufflesuite/ganache-cli:latest
-    # ports:
-      # - "8545:8545"
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - "8545:8545"
 
   # web:
     # build: .

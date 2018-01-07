@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-docker exec -it crypto_rsk_explorer_testnet_1 node /usr/src/explorer/tools/grabber.js
+docker exec -it crypto_rsk_mainnet_explorer_1 node /usr/src/explorer/tools/grabber.js
