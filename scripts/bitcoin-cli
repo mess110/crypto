@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker-compose run bitcoin_mainnet bitcoin-cli -conf=/root/bitcoin-client.conf "$@"

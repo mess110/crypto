@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-http-server --cors
+http-server /usr/app/html-games/ld/040/ # --cors
