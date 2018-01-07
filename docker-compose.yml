@@ -1,0 +1,58 @@
+version: '3'
+services:
+  rsk_testnet:
+    build: dockers/rsk/
+    environment:
+      - RSK_CONF=/etc/rsk/testnet.conf
+    volumes:
+      - ./data/rsk_testnet:/data
+    # ports:
+      # - "4444:4444"
+      # - "50505:50505"
+
+  rsk_mainnet:
+    build: dockers/rsk/
+    environment:
+      - RSK_CONF=/etc/rsk/mainnet.conf
+    volumes:
+      - ./data/rsk_mainnet:/data
+    # ports:
+      # - "4444:4444"
+      # - "50505:50505"
+
+  rsk_explorer_testnet:
+    build: dockers/explorer/
+    environment:
+      - MONGO_URI=mongodb://crypto_mongodb_1/blockDBTestnet
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    depends_on:
+      - rsk_testnet
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/mongodb:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+
+  # Local development
+  # ganache:
+    # image: trufflesuite/ganache-cli:latest
+    # ports:
+      # - "8545:8545"
+
+  # web:
+    # build: .
+    # ports:
+      # - "3000:3000"
+    # depends_on:
+      # - rsk
+    # volumes:
+      # - .:/usr/app
