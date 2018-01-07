@@ -30,7 +30,7 @@ var listenBlocks = function(config, web3) {
 
         if(error) {
             console.log('Error: ' + error);
-            if (error.indexOf('ECONNREFUSED') !== -1) {
+            if (error.toString().indexOf('ECONNREFUSED') !== -1) {
               process.exit(42);
             }
         } else if (log == null) {

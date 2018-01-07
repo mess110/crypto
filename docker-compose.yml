@@ -6,8 +6,6 @@ services:
       - BTC_CONF=/root/bitcoin.conf
     volumes:
       - ./data/bitcoin_mainnet:/data
-    # ports:
-      # - "8332:8332"
 
   bitcoin_testnet:
     build: dockers/bitcoin/
@@ -65,8 +63,6 @@ services:
 
   ganache:
     image: trufflesuite/ganache-cli:latest
-    # ports:
-      # - "8545:8545"
 
   truffle:
     build: dockers/truffle/
