@@ -5,7 +5,7 @@ services:
     environment:
       - BTC_CONF=/root/bitcoin.conf
     volumes:
-      - ./data/bitcoin:/data
+      - ./data/bitcoin_mainnet:/data
     # ports:
       # - "8332:8332"
 
