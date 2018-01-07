@@ -11,12 +11,15 @@ A dev enviornment for crypto related things. What's inside?
 With this repo, you will use a lot of servers (9) and will need a decent computer
 and a lot of disk space.
 
-TODO: add notes about nodeId and privateKey in dockers/rsk/mainnet.conf and
-dockers/rsk/testnet.conf
+## Notes
 
-TODO: write about kek
+* for rsk to work, you need to run ./scripts/rsk-id and put the values for nodeId and privateKey in dockers/rsk/mainnet.conf
+* for rsk testnet to work, you need to run ./scripts/rsk-testnet-id and put the values for nodeId and privateKey in dockers/rsk/testnet.conf
+* for bitcoin to work, make sure you set the correct allowip in dockers/bitcoin/bitcoin.conf
+* for bitcoin testnet to work, make sure you set the correct allowip in dockers/bitcoin/testnet.conf
+* security is not the focus of this repo (for now). bitcoin username and password is kek
 
-TODO: write about allowip in bitcoin.conf
+## Quickstart
 
 ```
 ./scripts/up
@@ -33,11 +36,14 @@ Once syncing is done you will have:
 * http://localhost:3001 - Explorer RSK
 * http://localhost:3002 - Explorer RSK Testnet
 
+## Scripts
+
 Some useful scripts are also included:
 
 * ./scripts/bitcoin-cli
 * ./scripts/bitcoin-testnet-cli
 * ./scripts/clean-data
-* ./scripts/rsk-node-id
+* ./scripts/rsk-id
+* ./scripts/rsk-testnet-id
 * ./scripts/truffle
 * ./scripts/up
