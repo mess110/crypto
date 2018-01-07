@@ -16,20 +16,6 @@ services:
     volumes:
       - ./data/bitcoin_testnet:/data
 
-  insight_mainnet:
-    build: dockers/insight/
-    ports:
-      - "3001:3000"
-    depends_on:
-      - bitcoin_mainnet
-
-  insight_testnet:
-    build: dockers/insight/
-    ports:
-      - "3002:3000"
-    depends_on:
-      - bitcoin_testnet
-
   rsk_mainnet:
     build: dockers/rsk/
     environment:
@@ -50,7 +36,7 @@ services:
       - MONGO_URI=mongodb://crypto_mongodb_1/blockDB
       - EXPLORER_CONFIG=/usr/src/explorer/mainnet.json
     ports:
-      - "3003:3000"
+      - "3001:3000"
     restart: unless-stopped
     depends_on:
       - rsk_mainnet
@@ -62,7 +48,7 @@ services:
       - MONGO_URI=mongodb://crypto_mongodb_1/blockDBTestnet
       - EXPLORER_CONFIG=/usr/src/explorer/testnet.json
     ports:
-      - "3004:3000"
+      - "3002:3000"
     restart: unless-stopped
     depends_on:
       - rsk_testnet
@@ -75,8 +61,6 @@ services:
       - MONGO_LOG_DIR=/dev/null
     volumes:
       - ./data/mongodb:/data/db
-    # ports:
-      # - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null # --quiet
 
   ganache:
