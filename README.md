@@ -3,12 +3,13 @@
 A dev enviornment for crypto related things. What's inside?
 
 * bitcoin (mainnet, testnet)
+* lightning node eclair (testnet)
 * rsk (mainnet, testnet)
 * rsk explorer (mainnet, testnet)
 * ganache
 * truffle
 
-With this repo, you will use a lot of servers (9) and will need a decent computer
+With this repo, you will use a lot of servers (10) and will need a decent computer
 and a lot of disk space.
 
 ## Notes
@@ -43,6 +44,7 @@ Some useful scripts are also included:
 * ./scripts/bitcoin-cli
 * ./scripts/bitcoin-testnet-cli
 * ./scripts/clean-data
+* ./scripts/eclair-cli
 * ./scripts/rsk-id
 * ./scripts/rsk-testnet-id
 * ./scripts/truffle

@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-docker exec -it crypto_truffle_1 truffle "$@"
+docker exec -it crypto_cli_1 truffle "$@"

@@ -14,6 +14,15 @@ services:
     volumes:
       - ./data/bitcoin_testnet:/data
 
+  eclair_testnet:
+    image: acinq/eclair
+    restart: unless-stopped
+    volumes:
+      - ./data/eclair_testnet:/data
+    depends_on:
+      - bitcoin_testnet
+    entrypoint: 'java -Declair.printToConsole -Declair.bitcoind.rpcuser=kek -Declair.bitcoind.rpcpassword=kek -Declair.bitcoind.host=crypto_bitcoin_testnet_1 -Declair.bitcoind.rpcport=8332 -Declair.bitcoind.zmq="tcp://crypto_bitcoin_testnet_1:29000" -Declair.api.binding-ip=0.0.0.0 -Declair.datadir=/data -jar eclair-node.jar'
+
   rsk_mainnet:
     build: dockers/rsk/
     environment:
@@ -64,8 +73,8 @@ services:
   ganache:
     image: trufflesuite/ganache-cli:latest
 
-  truffle:
-    build: dockers/truffle/
+  cli:
+    build: dockers/cli/
     ports:
       - "3000:8080"
     depends_on:
