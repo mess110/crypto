@@ -21,6 +21,7 @@ COPY rskj-core-0.4.0-BAMBOO-all.jar /usr/share/rsk/
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+COPY solc-static-linux /bin/solc
 COPY mainnet.conf /etc/rsk/mainnet.conf
 COPY testnet.conf /etc/rsk/testnet.conf
 COPY entry.sh /
