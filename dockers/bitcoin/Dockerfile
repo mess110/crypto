@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV BITCOIN_URL https://bitcoin.org/bin/bitcoin-core-0.15.1/bitcoin-0.15.1-x86_64-linux-gnu.tar.gz
+ENV BITCOIN_URL https://bitcoin.org/bin/bitcoin-core-0.16.0/bitcoin-0.16.0-x86_64-linux-gnu.tar.gz
 ENV BITCOIN_DATA /data
 
 RUN apt-get update \
